@@ -29,7 +29,7 @@ void	ft_handle_pixel(int x, int y, t_fractal *fractal)
 		square = ft_square(z);
 		z = ft_sum(square, c);
 		if ((z.real * z.real) + (z.not_real * z.not_real)
-				> fractal->hypothenuse)
+			> fractal->hypothenuse)
 		{
 			color = ft_to_scale(i, 0xFBF8CC, 0x9d8189, fractal->max_iteration);
 			ft_print_pixel(&fractal->img, x, y, color);
