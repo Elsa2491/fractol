@@ -29,10 +29,13 @@ void	ft_init(t_fractal *fractal)
 		free(fractal->connexion);
 		ft_handle_malloc_error();
 	}
-	fractal->img.address = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bits_per_pixel, &fractal->img.line_length, &fractal->img.endian);
+	fractal->img.address = mlx_get_data_addr(fractal->img.img_ptr,
+						&fractal->img.bits_per_pixel,
+						&fractal->img.line_length,
+						&fractal->img.endian);
 	ft_init_events(fractal);
 	ft_init_data(fractal);
-} 
+}
 
 void	ft_render_fractal(t_fractal *fractal)
 {
