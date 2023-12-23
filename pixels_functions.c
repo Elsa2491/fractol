@@ -4,17 +4,18 @@ int	ft_print_pixel(t_img *img, int x, int y, int color)
 {
 	char	*dest;
 
-	dest = img->address + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	return	(*(unsigned int*)dest = color);
+	dest = img->address
+		+ (y * img->line_length + x * (img->bits_per_pixel / 8));
+	return (* (unsigned int*)dest = color);
 }
 
 void	ft_handle_pixel(int x, int y, t_fractal *fractal)
 {
-	int		i;
+	int			i;
 	t_complex	z;
 	t_complex	c;
 	t_complex	square;
-	int		color;
+	int			color;
 
 	i = 0;
 	z.real = 0.0;
