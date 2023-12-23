@@ -17,9 +17,9 @@ typedef struct	s_img
 {
 	void	*img_ptr;
 	char	*address;
-	int	bits_per_pixel;
-	int	line_length;
-	int	endian;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }		t_img;
 
 typedef struct	s_fractal
@@ -32,6 +32,8 @@ typedef struct	s_fractal
 	double	shift_real;
 	double	shift_not_real;
 	double	zoom;
+	double	julia_real;
+	double	julia_not_real;
 	t_img	img;
 }		t_fractal;
 
