@@ -6,6 +6,8 @@
 # include <stdlib.h>
 # include <math.h>
 # include "minilibx-linux/mlx.h"
+# include "X11/X.h"
+# include "X11/keysym.h"
 
 # define ERROR_MSG      "Please enter correct arguments : \n\t\t\t\t→ \"./fractol mandelbrot\", or\n\t\t\t\t→ \"./fractol julia argv_2 argv_3\"\n"
 # define WIDTH	800
@@ -27,6 +29,8 @@ typedef struct	s_fractal
 	char	*name;
 	int	hypothenuse;
 	double	max_iteration;
+	double	shift_real;
+	double	shift_not_real;
 	t_img	img;
 }		t_fractal;
 
@@ -43,5 +47,6 @@ void	ft_init(t_fractal *fractal);
 void	ft_handle_malloc_error(void);
 void	ft_render_fractal(t_fractal *fractal);
 double		ft_to_scale(double unscaled_n, double new_min, double new_max, double old_max);
-int		ft_print_pixel(t_img *img, int x, int y, int color);
+t_complex	ft_sum(t_complex z, t_complex c);
+t_complex	ft_square(t_complex z);
 #endif

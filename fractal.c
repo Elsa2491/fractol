@@ -3,8 +3,47 @@
 void	ft_init_data(t_fractal *fractal)
 {
 	fractal->hypothenuse = 4;
-	fractal->max_iteration = 1500;
+	fractal->max_iteration = 300;
+	fractal->shift_real = 0.0;
+	fractal->shift_not_real = 0.0;
 }
+
+void	ft_handle_close(t_fractal *fractal)
+{
+	mlx_destroy_image(fractal->connexion, fractal->img.img_ptr);
+	mlx_destroy_window(fractal->connexion, fractal->window);
+	mlx_destroy_display(fractal->connexion);
+	free(fractal->connexion);
+}
+
+int	ft_handle_key(int key_code, t_fractal *fractal)
+{
+	if (key_code == XK_Escape)
+		ft_handle_close(fractal);
+	else if (key_code == XK_Left)
+		fractal->shift_real += 0.2;
+	else if (key_code == XK_Right)
+		fractal->shift_real -= 0.2;
+	else if (key_code == XK_Up)
+		fractal->shift_not_real -= 0.2;
+	else if (key_code == XK_Down)
+		fractal->shift_not_real += 0.2;
+	else if (key_code == 97)
+		fractal->max_iteration += 0.5;
+	else if (key_code == XK_minus)
+		fractal->max_iteration -= 0.5;
+//	else if (key_code == XK_space)
+	ft_render_fractal(fractal);
+}
+
+void	ft_init_events(t_fractal *fractal)
+{
+	mlx_hook(fractal->window, 2, (1L<<0), ft_handle_key, fractal); 
+//	mlx_hook(fractal->window, 4, (1L<<2), ft_handle_btn, fractal); 
+//	mlx_hook(fractal->window, 17, (1L<<17), ft_handle_close, fractal); 
+}
+
+
 
 void	ft_init(t_fractal *fractal)
 {
@@ -27,40 +66,16 @@ void	ft_init(t_fractal *fractal)
 		ft_handle_malloc_error();
 	}
 	fractal->img.address = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bits_per_pixel, &fractal->img.line_length, &fractal->img.endian);
-	// ft_init_events(fractal);
+	ft_init_events(fractal);
 	ft_init_data(fractal);
 } 
-
-double	ft_to_scale(double unscaled_n, double new_min, double new_max, double old_max)
-{
-	return (new_max - new_min) * unscaled_n / old_max + new_min;
-}
-
-t_complex	ft_sum(t_complex z, t_complex c)
-{
-	t_complex	result;
-
-	result.real = z.real + c.real;
-	result.not_real = z.not_real + c.not_real;
-	return (result);
-}
-
-t_complex	ft_square(t_complex z)
-{
-	t_complex	result;
-
-	result.real = (z.real * z.real) - (z.not_real * z.not_real);
-	result.not_real = 2 * z.real * z.not_real;
-	return (result);
-}
-
 
 int	ft_print_pixel(t_img *img, int x, int y, int color)
 {
 	char	*dest;
 
 	dest = img->address + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)dest = color;
+	return	(*(unsigned int*)dest = color);
 }
 
 void	ft_handle_pixel(int x, int y, t_fractal *fractal)
@@ -68,26 +83,21 @@ void	ft_handle_pixel(int x, int y, t_fractal *fractal)
 	int		i;
 	t_complex	z;
 	t_complex	c;
-//	t_complex	square;
+	t_complex	square;
 	int		color;
 
 	i = 0;
 	z.real = 0.0;
 	z.not_real = 0.0;
-	c.real = ft_to_scale(x, -2, 2, WIDTH);
-	c.not_real = ft_to_scale(y, 2, -2, HEIGHT);
+	c.real = ft_to_scale(x, -2, 2, WIDTH) + fractal->shift_real;
+	c.not_real = ft_to_scale(y, 2, -2, HEIGHT) + fractal->shift_not_real;
 	while (i < fractal->max_iteration)
 	{
-	//	square = ft_square(z);
-		z = ft_sum(ft_square(z), c);
-	/*	z.real = tmp_real;
-		z.not_real = 2 * z.real * z.not_real;
-		z.real = tmp_real;
-		z.real += c.real;
-		c.not_real += c.not_real;*/
+		square = ft_square(z);
+		z = ft_sum(square, c);
 		if ((z.real * z.real) + (z.not_real * z.not_real) > fractal->hypothenuse)
 		{
-			color = ft_to_scale(i, 0xFBF8CC, 0xB9FBC0, fractal->max_iteration);
+			color = ft_to_scale(i, 0xF5EBE0, 0xE3D5CA, fractal->max_iteration);
 			ft_print_pixel(&fractal->img, x, y, color);
 			return ;
 		}
