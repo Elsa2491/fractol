@@ -2,7 +2,7 @@
 
 double	ft_to_scale(double n, double new_min, double new_max, double old_max)
 {
-	return ((new_max - new_min) * unscaled_n / old_max + new_min);
+	return ((new_max - new_min) * n / old_max + new_min);
 }
 
 t_complex	ft_sum(t_complex z, t_complex c)
