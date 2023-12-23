@@ -37,9 +37,9 @@ void	ft_init(t_fractal *fractal)
 	if (!fractal->img.img_ptr)
 		ft_destroy_image(fractal);
 	fractal->img.address = mlx_get_data_addr(fractal->img.img_ptr,
-				&fractal->img.bits_per_pixel,
-				&fractal->img.line_length,
-				&fractal->img.endian);
+		&fractal->img.bits_per_pixel,
+		&fractal->img.line_length,
+		&fractal->img.endian);
 	ft_init_events(fractal);
 	ft_init_data(fractal);
 }
@@ -60,5 +60,6 @@ void	ft_render_fractal(t_fractal *fractal)
 		}
 		y += 1;
 	}
-	mlx_put_image_to_window(fractal->connexion, fractal->window, fractal->img.img_ptr, 0, 0);
+	mlx_put_image_to_window(fractal->connexion, fractal->window,
+		fractal->img.img_ptr, 0, 0);
 }
