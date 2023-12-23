@@ -20,8 +20,10 @@ void	ft_handle_pixel(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.real = 0.0;
 	z.not_real = 0.0;
-	c.real = (ft_to_scale(x, -2, 2, WIDTH) * fractal->zoom) + fractal->shift_real;
-	c.not_real = (ft_to_scale(y, 2, -2, HEIGHT) * fractal->zoom) + fractal->shift_not_real;
+	c.real = (ft_to_scale(x, -2, 2, WIDTH) * fractal->zoom)
+		+ fractal->shift_real;
+	c.not_real = (ft_to_scale(y, 2, -2, HEIGHT) * fractal->zoom)
+		+ fractal->shift_not_real;
 	while (i < fractal->max_iteration)
 	{
 		square = ft_square(z);
