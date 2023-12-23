@@ -9,8 +9,8 @@ int	main(int argc, char **argv)
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
 		fractal.name = argv[1];
-		ft_atoi(argv[2]);
-		ft_atoi(argv[3]);
+	//	ft_atoi(argv[2]);
+	//	ft_atoi(argv[3]);
 	//	printf("%f\n" , ft_atoi(argv[2]));
 		ft_init(&fractal);
 		ft_render_fractal(&fractal);
