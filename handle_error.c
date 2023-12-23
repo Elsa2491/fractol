@@ -9,8 +9,8 @@ void	ft_handle_malloc_error(void)
 double	ft_atoi(char *str)
 {
 	double		j;
-	double	before_comma;
-	double	after_comma;
+	double		before_comma;
+	double		after_comma;
 	int		sign;
 
 	before_comma = 0;
