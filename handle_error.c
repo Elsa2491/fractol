@@ -11,7 +11,7 @@ double	ft_atoi(char *str)
 	double		j;
 	double		before_comma;
 	double		after_comma;
-	int		sign;
+	int	sign;
 
 	before_comma = 0;
 	j = 1;
