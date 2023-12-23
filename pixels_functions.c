@@ -6,7 +6,7 @@ int	ft_print_pixel(t_img *img, int x, int y, int color)
 
 	dest = img->address
 		+ (y * img->line_length + x * (img->bits_per_pixel / 8));
-	return (* (unsigned int*)dest = color);
+	return (*(unsigned int *)dest = color);
 }
 
 void	ft_handle_pixel(int x, int y, t_fractal *fractal)
