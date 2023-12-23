@@ -13,6 +13,11 @@
 # define WIDTH	800
 # define HEIGHT	800
 
+# define R(a) (a) >> 16
+# define G(a) ((a) >> 8) & 0xFF
+# define B(a) (a) & 0xFF
+# define RGB(a, b, c) ((a) << 16) + ((b) << 8) + (c)
+
 typedef struct	s_img
 {
 	void	*img_ptr;
@@ -31,6 +36,7 @@ typedef struct	s_fractal
 	double	max_iteration;
 	double	shift_real;
 	double	shift_not_real;
+	double	zoom;
 	t_img	img;
 }		t_fractal;
 
