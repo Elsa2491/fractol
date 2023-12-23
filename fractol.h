@@ -4,7 +4,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include <math.h>
+//# include <math.h>
 # include "minilibx-linux/mlx.h"
 # include "X11/X.h"
 # include "X11/keysym.h"
@@ -12,11 +12,6 @@
 # define ERROR_MSG      "Please enter correct arguments : \n\t\t\t\t→ \"./fractol mandelbrot\", or\n\t\t\t\t→ \"./fractol julia argv_2 argv_3\"\n"
 # define WIDTH	800
 # define HEIGHT	800
-
-# define R(a) (a) >> 16
-# define G(a) ((a) >> 8) & 0xFF
-# define B(a) (a) & 0xFF
-# define RGB(a, b, c) ((a) << 16) + ((b) << 8) + (c)
 
 typedef struct	s_img
 {
@@ -55,4 +50,9 @@ void	ft_render_fractal(t_fractal *fractal);
 double		ft_to_scale(double unscaled_n, double new_min, double new_max, double old_max);
 t_complex	ft_sum(t_complex z, t_complex c);
 t_complex	ft_square(t_complex z);
+void	ft_init_events(t_fractal *fractal);
+int		ft_handle_mouse(int btn, int real, int not_rel, t_fractal *fractal);
+int		ft_handle_clode(t_fractal *fractal);
+int		ft_handle_key(int key_code, t_fractal *fractal);
+double		ft_atoi(char *str);
 #endif

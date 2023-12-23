@@ -3,12 +3,13 @@
 void	ft_init_data(t_fractal *fractal)
 {
 	fractal->hypothenuse = 4;
-	fractal->max_iteration = 300;
+	fractal->max_iteration = 1500;
 	fractal->shift_real = 0.0;
 	fractal->shift_not_real = 0.0;
 	fractal->zoom = 1.0;
 }
 
+/*
 int	ft_handle_close(t_fractal *fractal)
 {
 	mlx_destroy_image(fractal->connexion, fractal->img.img_ptr);
@@ -23,17 +24,17 @@ int	ft_handle_key(int key_code, t_fractal *fractal)
 	if (key_code == XK_Escape)
 		ft_handle_close(fractal);
 	else if (key_code == XK_Left)
-		fractal->shift_real += 0.2;
+		fractal->shift_real += 1.5;
 	else if (key_code == XK_Right)
-		fractal->shift_real -= 0.2;
+		fractal->shift_real -= 1.5;
 	else if (key_code == XK_Up)
-		fractal->shift_not_real -= 0.2;
+		fractal->shift_not_real -= 1.5;
 	else if (key_code == XK_Down)
-		fractal->shift_not_real += 0.2;
+		fractal->shift_not_real += 1.5;
 	else if (key_code == 97)
-		fractal->max_iteration += 10;
+		fractal->max_iteration += 15;
 	else if (key_code == XK_minus)
-		fractal->max_iteration -= 10;
+		fractal->max_iteration -= 15;
 	ft_render_fractal(fractal);
 	if (key_code == XK_space)
 	{
@@ -43,42 +44,12 @@ int	ft_handle_key(int key_code, t_fractal *fractal)
 	}
 }
 
-int	ft_round(double num)
-{
-	int	rounded;
-
-	rounded = (int)num;
-	if (num - rounded >= 0.5)
-		rounded += 1;
-	return (rounded);
-}
-
-int	ft_gradient(int start_color, int end_color, int len, int pix)
-{
-	double	increment[3];
-	int	new[3];
-	int	new_color;
-
-	increment[0] = (double)((R(end_color)) - (R(start_color))) / (double)len;
-	increment[1] = (double)((G(end_color)) - (G(start_color))) / (double)len;
-	increment[2] = (double)((B(end_color)) - (B(start_color))) / (double)len;
-	
-	new[0] = (R(start_color)) + ft_round(pix * increment[0]);
-	new[1] = (G(start_color)) + ft_round(pix * increment[1]);
-	new[2] = (B(start_color)) + ft_round(pix * increment[2]);
-
-	new_color = RGB(new[0], new[1], new[2]);
-
-	return (new_color);
-}
-
 int	ft_handle_mouse(int btn, int real, int not_real, t_fractal *fractal)
 {
 	if (btn == 4)
 		fractal->zoom += 0.5;
 	else if (btn == 5)
-		fractal->zoom -= 0.9;
-	printf("%d\n", btn);
+		fractal->zoom -= 0.5;
 	ft_render_fractal(fractal);
 	return (0);
 }
@@ -89,7 +60,7 @@ void	ft_init_events(t_fractal *fractal)
 	mlx_hook(fractal->window, ButtonPress, ButtonPressMask, ft_handle_mouse, fractal); 
 	mlx_hook(fractal->window, 17, (1L<<17), ft_handle_close, fractal); 
 }
-
+*/
 
 
 void	ft_init(t_fractal *fractal)
@@ -144,7 +115,7 @@ void	ft_handle_pixel(int x, int y, t_fractal *fractal)
 		z = ft_sum(square, c);
 		if ((z.real * z.real) + (z.not_real * z.not_real) > fractal->hypothenuse)
 		{
-			color = ft_to_scale(i, ft_gradient(0xC6DAF8, 0xBDE0FE, fractal->img.line_length, fractal->img.bits_per_pixel), ft_gradient(0xBDE0FE, 0xA2D2FF, fractal->img.line_length, fractal->img.bits_per_pixel),  fractal->max_iteration);
+			color = ft_to_scale(i, 0xFBF8CC, 0x9d8189, fractal->max_iteration);
 			ft_print_pixel(&fractal->img, x, y, color);
 			return ;
 		}
