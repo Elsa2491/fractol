@@ -13,7 +13,7 @@
 # define WIDTH	800
 # define HEIGHT	800
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img_ptr;
 	char	*address;
@@ -22,12 +22,12 @@ typedef struct	s_img
 	int		endian;
 }		t_img;
 
-typedef struct	s_fractal
+typedef struct s_fractal
 {
 	void	*connexion;
 	void	*window;
 	char	*name;
-	int	hypothenuse;
+	int		hypothenuse;
 	double	max_iteration;
 	double	shift_real;
 	double	shift_not_real;
@@ -37,8 +37,7 @@ typedef struct	s_fractal
 	t_img	img;
 }		t_fractal;
 
-
-typedef struct	s_complex
+typedef struct s_complex
 {
 	double	real;
 	double	not_real;
@@ -50,11 +49,11 @@ void	ft_init(t_fractal *fractal);
 void	ft_handle_malloc_error(void);
 void	ft_render_fractal(t_fractal *fractal);
 double		ft_to_scale(double unscaled_n, double new_min, double new_max, double old_max);
-t_complex	ft_sum(t_complex z, t_complex c);
-t_complex	ft_square(t_complex z);
+t_complex		ft_sum(t_complex z, t_complex c);
+t_complex		ft_square(t_complex z);
 void	ft_init_events(t_fractal *fractal);
 int		ft_handle_mouse(int btn, int real, int not_rel, t_fractal *fractal);
 int		ft_handle_clode(t_fractal *fractal);
 int		ft_handle_key(int key_code, t_fractal *fractal);
-double		ft_atoi(char *str);
+double	ft_atoi(char *str);
 #endif
