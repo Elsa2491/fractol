@@ -1,14 +1,5 @@
 #include "fractol.h"
 
-/*void	ft_init_data(t_fractal *fractal)
-{
-	fractal->hypothenuse = 4;
-	fractal->max_iteration = 1500;
-	fractal->shift_real = 0.0;
-	fractal->shift_not_real = 0.0;
-	fractal->zoom = 1.0;
-}*/
-
 int	ft_handle_close(t_fractal *fractal)
 {
 	mlx_destroy_image(fractal->connexion, fractal->img.img_ptr);
