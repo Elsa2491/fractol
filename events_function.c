@@ -40,7 +40,7 @@ int	ft_handle_mouse(int btn, int real, int not_real, t_fractal *fractal)
 
 void	ft_init_events(t_fractal *fractal)
 {
-	mlx_hook(fractal->window, 2, (1L<<0), ft_handle_key, fractal); 
-	mlx_hook(fractal->window, ButtonPress, ButtonPressMask, ft_handle_mouse, fractal); 
-	mlx_hook(fractal->window, 17, (1L<<17), ft_handle_close, fractal); 
+	mlx_hook(fractal->window, 2, (1L << 0), ft_handle_key, fractal);
+	mlx_hook(fractal->window, 4, (1L << 2), ft_handle_mouse, fractal);
+	mlx_hook(fractal->window, 17, (1L << 17), ft_handle_close, fractal);
 }
