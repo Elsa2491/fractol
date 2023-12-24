@@ -3,7 +3,7 @@
 void	ft_init_data(t_fractal *fractal)
 {
 	fractal->hypothenuse = 4;
-	fractal->max_iteration = 1500;
+	fractal->max_iteration = 1500; // c'était beau avec 1500 iterations
 	fractal->shift_real = 0.0;
 	fractal->shift_not_real = 0.0;
 	fractal->zoom = 1.0;

@@ -14,6 +14,7 @@ double	ft_atoi(char *str)
 	int	sign;
 
 	before_comma = 0;
+	after_comma = 0;
 	j = 1;
 	sign = 1;
 	while (*str == 32 || (*str >= 9 && *str <= 13))

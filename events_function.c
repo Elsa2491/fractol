@@ -14,26 +14,26 @@ int	ft_handle_key(int key_code, t_fractal *fractal)
 	if (key_code == XK_Escape)
 		ft_handle_close(fractal);
 	else if (key_code == XK_Left)
-		fractal->shift_real += 1.5;
+		fractal->shift_real += (0.5 * fractal->zoom);
 	else if (key_code == XK_Right)
-		fractal->shift_real -= 1.5;
+		fractal->shift_real -= (0.5 * fractal->zoom);
 	else if (key_code == XK_Up)
-		fractal->shift_not_real -= 1.5;
+		fractal->shift_not_real -= (0.5 * fractal->zoom);
 	else if (key_code == XK_Down)
-		fractal->shift_not_real += 1.5;
+		fractal->shift_not_real += (0.5 * fractal->zoom);
 	else if (key_code == 97)
-		fractal->max_iteration += 15;
+		fractal->max_iteration += 5;
 	else if (key_code == XK_minus)
-		fractal->max_iteration -= 15;
+		fractal->max_iteration -= 5;
 	ft_render_fractal(fractal);
 }
 
 int	ft_handle_mouse(int btn, int real, int not_real, t_fractal *fractal)
 {
 	if (btn == 4)
-		fractal->zoom += 0.5;
+		fractal->zoom += 0.95;
 	else if (btn == 5)
-		fractal->zoom -= 0.5;
+		fractal->zoom -= 0.05;
 	ft_render_fractal(fractal);
 	return (0);
 }
