@@ -26,9 +26,10 @@ int	ft_handle_key(int key_code, t_fractal *fractal)
 	else if (key_code == XK_minus)
 		fractal->max_iteration -= 5;
 	ft_render_fractal(fractal);
+	return (0);
 }
 
-int	ft_handle_mouse(int btn, int real, int not_real, t_fractal *fractal)
+int	ft_handle_mouse(int btn, t_fractal *fractal)
 {
 	if (btn == 4)
 		fractal->zoom += 0.95;

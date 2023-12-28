@@ -53,7 +53,7 @@ double	ft_to_scale(double n, double new_min, double new_max, double old_max);
 t_complex	ft_sum(t_complex z, t_complex c);
 t_complex	ft_square(t_complex z);
 void	ft_init_events(t_fractal *fractal);
-int		ft_handle_mouse(int btn, int real, int not_rel, t_fractal *fractal);
+int		ft_handle_mouse(int btn, t_fractal *fractal);
 int		ft_handle_clode(t_fractal *fractal);
 int		ft_handle_key(int key_code, t_fractal *fractal);
 void	ft_handle_pixel(int x, int y, t_fractal *fractal);
