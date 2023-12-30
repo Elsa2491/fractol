@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 11:31:18 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/30 13:22:03 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/30 13:23:51 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_handle_malloc_error(void)
 
 static double	ft_atob(char *str, int i)
 {
-	double			j;
+	double		j;
 	double		after_comma;
 
 	j = 1;
@@ -39,13 +39,11 @@ double	ft_atoi(char *str)
 	double		before_comma;
 	double		after_comma;
 	int			sign;
-	double			j;
 	int			i;
 
 	before_comma = 0;
 	i = 0;
 	sign = 1;
-	j = 1;
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		str += 1;
 	if (str[i] == '+' || str[i] == '-')
