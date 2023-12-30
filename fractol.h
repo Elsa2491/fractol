@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/30 11:31:07 by eltouma           #+#    #+#             */
+/*   Updated: 2023/12/30 12:19:53 by eltouma          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 
 # define FRACTOL_H
@@ -41,7 +53,7 @@ typedef struct s_complex
 {
 	double	real;
 	double	not_real;
-}		t_complex;
+}		t_cmplx;
 
 void	ft_to_lower(char *str);
 int		ft_strncmp(const char *s1, const char *s2, int n);
@@ -50,11 +62,12 @@ void	ft_init(t_fractal *fractal);
 void	ft_handle_malloc_error(void);
 void	ft_render_fractal(t_fractal *fractal);
 double	ft_to_scale(double n, double new_min, double new_max, double old_max);
-t_complex	ft_sum(t_complex z, t_complex c);
-t_complex	ft_square(t_complex z);
+t_cmplx	ft_sum(t_cmplx z, t_cmplx c);
+t_cmplx	ft_square(t_cmplx z);
 void	ft_init_events(t_fractal *fractal);
 int		ft_handle_mouse(int btn, t_fractal *fractal);
 int		ft_handle_clode(t_fractal *fractal);
 int		ft_handle_key(int key_code, t_fractal *fractal);
 void	ft_handle_pixel(int x, int y, t_fractal *fractal);
+int	key_hook(int keycode, t_fractal *fractal);
 #endif

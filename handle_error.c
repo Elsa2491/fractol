@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_error.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/30 11:31:18 by eltouma           #+#    #+#             */
+/*   Updated: 2023/12/30 13:22:03 by eltouma          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	ft_handle_malloc_error(void)
@@ -6,34 +18,50 @@ void	ft_handle_malloc_error(void)
 	exit(1);
 }
 
-double	ft_atoi(char *str)
+static double	ft_atob(char *str, int i)
 {
-	double		j;
-	double		before_comma;
+	double			j;
 	double		after_comma;
-	int	sign;
 
-	before_comma = 0;
-	after_comma = 0;
 	j = 1;
-	sign = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str += 1;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str += 1;
-	}
-	while (*str >= 48 && *str <= 57)
-		before_comma = before_comma * 10 + *str++ - 48;
-	if (*str == '.')
-		str += 1;
-	while (*str >= 48 && *str <= 57)
+	after_comma = 0;
+	while (str[i] >= 48 && str[i] <= 57)
 	{
 		j /= 10;
-		after_comma = after_comma + (*str++ - 48) * j;
-	}	
+		after_comma = after_comma + (str[i] - 48) * j;
+		i += 1;
+	}
+	return (after_comma);
+}
+
+double	ft_atoi(char *str)
+{
+	double		before_comma;
+	double		after_comma;
+	int			sign;
+	double			j;
+	int			i;
+
+	before_comma = 0;
+	i = 0;
+	sign = 1;
+	j = 1;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		str += 1;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i += 1;
+	}
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		before_comma = before_comma * 10 + str[i] - 48;
+		i += 1;
+	}
+	if (str[i] == '.')
+		i += 1;
+	after_comma = ft_atob(str, i);
 	return (sign * (before_comma + after_comma));
 }
 

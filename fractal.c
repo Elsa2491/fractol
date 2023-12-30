@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractal.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/30 11:30:51 by eltouma           #+#    #+#             */
+/*   Updated: 2023/12/30 12:18:49 by eltouma          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	ft_init_data(t_fractal *fractal)
 {
 	fractal->hypothenuse = 4;
-	fractal->max_iteration = 1500; // c'était beau avec 1500 iterations
+	fractal->max_iteration = 1500;
 	fractal->shift_real = 0.0;
 	fractal->shift_not_real = 0.0;
 	fractal->zoom = 1.0;
@@ -24,6 +36,16 @@ void	ft_destroy_image(t_fractal *fractal)
 	ft_handle_malloc_error();
 }
 
+int	key_hook(int keycode, t_fractal *fractal)
+{
+	if (keycode == 4)
+	{
+		printf("hello\n");
+		fractal->zoom += 0.9;
+	}
+	return (0);
+}
+
 void	ft_init(t_fractal *fractal)
 {
 	fractal->connexion = mlx_init();
@@ -37,9 +59,9 @@ void	ft_init(t_fractal *fractal)
 	if (!fractal->img.img_ptr)
 		ft_destroy_image(fractal);
 	fractal->img.address = mlx_get_data_addr(fractal->img.img_ptr,
-				&fractal->img.bits_per_pixel,
-				&fractal->img.line_length,
-				&fractal->img.endian);
+			&fractal->img.bits_per_pixel,
+			&fractal->img.line_length,
+			&fractal->img.endian);
 	ft_init_events(fractal);
 	ft_init_data(fractal);
 }

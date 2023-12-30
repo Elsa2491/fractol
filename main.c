@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/30 11:31:27 by eltouma           #+#    #+#             */
+/*   Updated: 2023/12/30 11:38:28 by eltouma          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	main(int argc, char **argv)
@@ -12,7 +24,7 @@ int	main(int argc, char **argv)
 		ft_render_fractal(&fractal);
 		mlx_loop(fractal.connexion);
 	}
-	else if  (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
+	else if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
 	{
 		fractal.name = argv[1];
 		fractal.julia_real = ft_atoi(argv[2]);
@@ -22,6 +34,7 @@ int	main(int argc, char **argv)
 		ft_render_fractal(&fractal);
 		mlx_loop(fractal.connexion);
 	}
+	else
 	{
 		printf("%s", ERROR_MSG);
 		exit(EXIT_FAILURE);
