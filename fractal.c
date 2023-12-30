@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 11:30:51 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/30 12:18:49 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/30 18:18:26 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_init_data(t_fractal *fractal)
 {
 	fractal->hypothenuse = 4;
-	fractal->max_iteration = 1500;
+	fractal->max_iteration = 100;
 	fractal->shift_real = 0.0;
 	fractal->shift_not_real = 0.0;
 	fractal->zoom = 1.0;
@@ -36,16 +36,6 @@ void	ft_destroy_image(t_fractal *fractal)
 	ft_handle_malloc_error();
 }
 
-int	key_hook(int keycode, t_fractal *fractal)
-{
-	if (keycode == 4)
-	{
-		printf("hello\n");
-		fractal->zoom += 0.9;
-	}
-	return (0);
-}
-
 void	ft_init(t_fractal *fractal)
 {
 	fractal->connexion = mlx_init();
@@ -62,8 +52,8 @@ void	ft_init(t_fractal *fractal)
 			&fractal->img.bits_per_pixel,
 			&fractal->img.line_length,
 			&fractal->img.endian);
-	ft_init_events(fractal);
 	ft_init_data(fractal);
+	ft_init_events(fractal);
 }
 
 void	ft_render_fractal(t_fractal *fractal)

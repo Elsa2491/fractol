@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 11:30:13 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/30 11:55:11 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/30 19:20:25 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_handle_pixel(int x, int y, t_fractal *fractal)
 
 	i = 0;
 	ft_print_right_fractal(x, y, &z, &c, fractal);
-	while (i < fractal->max_iteration)
+	while (i < fractal->max_iteration && fractal->zoom <= 146.000000)
 	{
 		z = ft_sum(ft_square(z), c);
 		if ((z.real * z.real) + (z.not_real * z.not_real)

@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 11:30:40 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/30 12:45:50 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/30 18:51:55 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,33 @@ int	ft_handle_key(int key_code, t_fractal *fractal)
 		fractal->shift_not_real -= (0.5 * fractal->zoom);
 	else if (key_code == XK_Down)
 		fractal->shift_not_real += (0.5 * fractal->zoom);
-	else if (key_code == XK_plus)
-		fractal->max_iteration += 5;
-	else if (key_code == XK_minus)
-		fractal->max_iteration -= 5;
+	else if (key_code == 107)
+	{
+		fractal->max_iteration += 2;
+		printf("+= 2 = %f\n", fractal->max_iteration);
+	}
+	else if (key_code == 108)
+	{
+		fractal->max_iteration += 2;
+		if (fractal->max_iteration < 20.000000)
+			return (0) ;
+		printf("-= 2 = %f\n", fractal->max_iteration);
+	}
+
 	ft_render_fractal(fractal);
 	return (0);
 }
 
-int	ft_handle_mouse(int btn, t_fractal *fractal)
+int	ft_handle_mouse(int key_code, int x, int y, t_fractal *fractal)
 {
-	if (btn == 3)
+	printf("x = %d\n", x);
+	printf("y = %d\n", y);
+	if (key_code == 4)
 	{
 		printf("up\n");
-		fractal->zoom += 0.1;
+		fractal->zoom += 0.05;
 	}
-	else if (btn == 5)
+	else if (key_code == 5)
 	{
 		printf("down\n");
 		fractal->zoom -= 0.05;
@@ -59,8 +70,7 @@ int	ft_handle_mouse(int btn, t_fractal *fractal)
 
 void	ft_init_events(t_fractal *fractal)
 {
-	mlx_mouse_hook(fractal->window, ft_handle_mouse, fractal);
 	mlx_key_hook(fractal->window, ft_handle_key, fractal);
-//	mlx_hook(fractal->window, 4, (1L << 2), mouse, fractal);
 	mlx_hook(fractal->window, 17, (1L << 17), ft_handle_close, fractal);
+	mlx_hook(fractal->window, 4, (1L << 2), ft_handle_mouse, fractal);
 }
