@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 11:31:07 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/18 00:31:52 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/18 00:50:13 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ void	ft_check_param(char **argv);
 void	ft_to_lower(char *str);
 int		ft_strncmp(const char *s1, const char *s2, int n);
 double	ft_atoi(char *str);
-void	ft_init_fractal(t_fractal *fractal);
-void	ft_init_img(t_fractal *fractal);
-void	ft_init_complex(t_cmplx complex_nb);
+void	*ft_memset(void *s, int c, unsigned int n);
 void	ft_init(t_fractal *fractal);
 void	ft_handle_malloc_error(void);
 void	ft_render_fractal(t_fractal *fractal);

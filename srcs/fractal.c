@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 11:30:51 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/18 00:29:35 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/18 00:47:03 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	ft_destroy_image(t_fractal *fractal)
 
 void	ft_init(t_fractal *fractal)
 {
-	ft_init_img(fractal);
+	t_img	img;
+
+	ft_memset(&img, 0, sizeof(t_img));
 	fractal->connexion = mlx_init();
 	if (!fractal->connexion)
 		ft_handle_malloc_error();

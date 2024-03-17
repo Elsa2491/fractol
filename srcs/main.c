@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 11:31:27 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/28 03:49:50 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/18 00:51:35 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		ft_print_help();
-	ft_init_fractal(&fractal);
+	ft_memset(&fractal, 0, sizeof(t_fractal));
 	ft_to_lower(argv[1]);
 	if (argc == 3)
 		ft_print_julia_missing_param();
