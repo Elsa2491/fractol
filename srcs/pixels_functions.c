@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 11:30:13 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/18 00:30:22 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/18 00:56:57 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	ft_handle_pixel(double x, double y, t_fractal *fractal)
 	double		color;
 
 	i = 0;
+	ft_memset(&z, 0, sizeof(t_cmplx));
+	ft_memset(&c, 0, sizeof(t_cmplx));
 	ft_set_z(x, y, &z, fractal);
 	ft_set_c(x, y, &c, fractal);
 	while (i < fractal->max_iteration)
